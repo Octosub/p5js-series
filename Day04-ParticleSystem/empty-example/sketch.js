@@ -9,7 +9,7 @@ function setup() {
 function draw() {
   background(30)
 
-  for(let i = 0; i < 20; i++) {
+  for(let i = 0; i < 10; i++) {
     p = new Particle()
     particles.push(p)
   }
