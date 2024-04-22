@@ -12,7 +12,7 @@ class Particle {
   }
 
   update() {
-    let m = map((frameCount * 3), -1, 1, 0.4, 0.6)
+    let m = map(sin(frameCount * 3), -1, 1, 0.4, 0.6)
     this.acc.mult(m)
 
     this.vel.add(this.acc)
@@ -31,6 +31,6 @@ class Particle {
     noStroke()
 
     fill(this.r, this.g, this.b, this.alpha)
-    ellipse(this.pos.x, this.pos.y, 3)
+    ellipse(this.pos.x, this.pos.y, 2)
   }
 }
