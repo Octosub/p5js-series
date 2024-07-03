@@ -29,6 +29,11 @@ function setup() {
 
 function draw() {
 
+  let r = map(sin(frameCount / 2), -1, 1, 150, 100)
+  let g = map(sin(frameCount / 2), -1, 1, 100, 300)
+  let b = map(cos(frameCount), -1, 1, 100, 300)
+
+  stroke(r, g, b)
 
   rotateX(angleX)
   rotateY(angleY)
@@ -36,7 +41,7 @@ function draw() {
 
   background(30);
 
-  stroke('white')
+  //stroke('white')
   strokeWeight(3)
 
   line(-50, -50, -50, 50, -50, -50)
