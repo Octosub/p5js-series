@@ -13,6 +13,7 @@ function setup() {
   noCanvas();
   video = createCapture(VIDEO);
   video.size(120, 96);
+  video.hide();
   asciiDiv = createDiv();
 }
 
