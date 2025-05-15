@@ -24,7 +24,7 @@ function setup() {
   frameRate(30);
 }
 
- 
+let hits = 0;
 
 function draw() {
   noFill();  
@@ -36,6 +36,8 @@ function draw() {
     if ((pointInstance.birthFrame + pointLifeSpan) < frameCount) {
       pointStore.splice(index, 1)
     }
+    push();
+    noStroke();
     bezier(
       pointInstance.bezier.x1,
       pointInstance.bezier.y1,
@@ -46,7 +48,7 @@ function draw() {
       pointInstance.bezier.x4,
       pointInstance.bezier.y4
     );
-
+    pop();
     let t = map(sin(271 - (frameCount - pointInstance.birthFrame) * 7), -1, 1, 0, 1);
     console.log("val", sin(270 - (frameCount - pointInstance.birthFrame) * 0.1))
     console.log("t: ", t)
@@ -65,9 +67,25 @@ function draw() {
       pointInstance.bezier.y4,
       t
     )
-    fill(255);
+    fill(random, random, random);
     circle(x, y, 15)
+
+    // Hit detection
+    if (x > 350 && x < 400 && y > 100 && y < 120) {
+      hits++;
+    }
+
   })
+  // Draw hit counter
+  fill(0);
+  textSize(16);
+  textAlign(LEFT);
+  text("Hits: " + hits, 10, 20);
+
+
+  // Draw basket
+  stroke(0);
+  line(350, 120, 400, 120);
 }
 
 function mousePressed() {
@@ -82,7 +100,7 @@ function mousePressed() {
     y3: mouseY - 180,
     y4: mouseY
   }
-    
-  
-  pointStore.push(new Point(mouseX, mouseY, bezierObj));  
+  if (pointStore.length == 0){
+    pointStore.push(new Point(mouseX, mouseY, bezierObj));  
+  }
 }
